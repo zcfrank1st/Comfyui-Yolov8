@@ -5,7 +5,7 @@ ComfyUI Yolov8
 
 
 
-## INSTANLL
+## INSTALL
 
 
 1. in comfyui `custom_nodes` dir and `https://github.com/zcfrank1st/Comfyui-Yolov8.git`
