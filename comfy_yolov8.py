@@ -20,7 +20,7 @@ class Yolov8DetectionNode:
             },
         }
 
-    RETURN_TYPES = ("IMAGE",)
+    RETURN_TYPES = ("IMAGE", "JSON")
     FUNCTION = "detect"
     CATEGORY = "yolov8"
 
@@ -43,7 +43,7 @@ class Yolov8DetectionNode:
         image_tensor_out = torch.tensor(np.array(im).astype(np.float32) / 255.0)  # Convert back to CxHxW
         image_tensor_out = torch.unsqueeze(image_tensor_out, 0)
 
-        return (image_tensor_out,)
+        return (image_tensor_out, {"classify": [r.boxes.cls.tolist()[0] for r in results]})
 
 class Yolov8SegNode:
     def __init__(self) -> None:
