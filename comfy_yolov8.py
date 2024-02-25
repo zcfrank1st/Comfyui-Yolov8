@@ -120,6 +120,7 @@ class Yolov8SegNode:
             people_masks = masks[people_indices]
             # scale for visualizing results
             people_mask = torch.any(people_masks, dim=0).int() * 255
+            people_mask = people_mask.cpu()
             mask_list.append(people_mask)
 
             im_array = results[0].plot()  # plot a BGR numpy array of predictions
